@@ -1,5 +1,5 @@
 #!/bin/sh
-# This is a simple edit for testing purposes.
+
 repositoryName=$1
 repositoryTag=$2
 
