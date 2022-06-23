@@ -11,11 +11,15 @@ aws ecr describe-images --repository-name "$repositoryName" >tmpfile
 
 # parse out the imageTag and imageDigest value(s)
 
-imageTag=$(cat tmpfile | jq '.imageDetails[0].imageTags[0]')
-imageDigest=$(cat tmpfile | jq '.imageDetails[0].imageDigest')
+imageTag=$repositoryTag
+imageDigest=$(cat tmpfile | jq ".imageDetails[] | select(.imageTags[0]==\"$imageTag\") | .imageDigest")
 
 echo "Scan summary:"
-cat tmpfile | jq '.imageDetails[0] | { repositoryName, imageScanStatus, summary: .imageScanFindingsSummary }'
+cat tmpfile | jq ".imageDetails[] \
+                    | select(.imageTags[0]==\"$imageTag\") \
+                    | { repositoryName, imageScanStatus, summary: .imageScanFindingsSummary }"
+
+# cat tmpfile | jq '.imageDetails[0] | { repositoryName, imageScanStatus, summary: .imageScanFindingsSummary }'
 
 rm tmpfile
 
