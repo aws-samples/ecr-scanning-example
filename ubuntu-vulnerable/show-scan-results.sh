@@ -19,8 +19,6 @@ cat tmpfile | jq ".imageDetails[] \
                     | select(.imageTags[0]==\"$imageTag\") \
                     | { repositoryName, imageScanStatus, summary: .imageScanFindingsSummary }"
 
-# cat tmpfile | jq '.imageDetails[0] | { repositoryName, imageScanStatus, summary: .imageScanFindingsSummary }'
-
 rm tmpfile
 
 # Use query the scan findings using the CLI, supplying the imageTag and image Digest values
