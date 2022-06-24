@@ -56,4 +56,4 @@ Thanks to:
 ## License
 see [LICENSE](./LICENSE).
 
-(c) 2020 Amazon Web Services, Inc. or its affiliates. All Rights Reserved.
+(c) 2022 Amazon Web Services, Inc. or its affiliates. All Rights Reserved.
