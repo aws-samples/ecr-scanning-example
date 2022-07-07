@@ -1,10 +1,21 @@
 #!/bin/bash
 # (c) 2022 Amazon Web Services, Inc. or its affiliates. All Rights Reserved.
 
-region=$1
-accountID=$2
-repositoryName=$3
-repositoryTag=$4
+function usage {
+    echo "Usage: $1 <repositoryName> <repositoryTag>"
+}
+
+command=$0
+# region=$1
+# accountID=$2
+repositoryName=$1
+repositoryTag=$2
+
+# check input parameters
+if [[ -z "$repositoryName" || -z "$repositoryTag" ]]; then
+    usage "$command"
+    exit 1
+fi
 
 # Use the repository name to get the imageTag and imageDigest values
 
@@ -13,7 +24,7 @@ aws ecr describe-images --repository-name "$repositoryName" >tmpfile
 # parse out the imageTag and imageDigest value(s)
 
 imageTag=$repositoryTag
-imageDigest=$(cat tmpfile | jq ".imageDetails[] | select(.imageTags[0]==\"$imageTag\") | .imageDigest")
+imageDigest=$(jq <tmpfile ".imageDetails[] | select(.imageTags[0]==\"$imageTag\") | .imageDigest")
 
 rm tmpfile
 
@@ -33,13 +44,13 @@ aws ecr describe-image-scan-findings --repository-name "$repositoryName" \
 #
 
 echo "Scan summary:"
-cat findings.json | jq "{ repositoryName: \"$repositoryName\", \
+jq <findings.json "{ repositoryName: \"$repositoryName\", \
                           summary: { imageScanCompletedAt, \
                                      vulnerabilitySourceUpdatedAt,
                                      findingSeverityCounts } }"
 
 echo -e "\nScan findings:"
-cat findings.json | jq ".enhancedFindings[] | { title, \
+jq <findings.json ".enhancedFindings[] | { title, \
                                 severity, \
                                 type } \
                             | join(\" \")"

@@ -1,10 +1,21 @@
 #!/bin/bash
 # (c) 2022 Amazon Web Services, Inc. or its affiliates. All Rights Reserved.
 
+function usage {
+    echo "Usage: $1 <region> <accountID>"
+}
+
+command=$0
 region=$1
 accountID=$2
-repositoryName=$3
-repositoryTag=$4
+# repositoryName=$3
+# repositoryTag=$4
+
+# check input parameters
+if [[ -z "$region" || -z "$accountID" ]]; then
+    usage "$command"
+    exit 1
+fi
 
 # get docker logged into ECR
 
