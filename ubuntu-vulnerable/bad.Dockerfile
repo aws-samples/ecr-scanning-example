@@ -15,6 +15,17 @@ WORKDIR /workdir
 COPY ./files /workdir
 
 #
+# create a non-root user to run as
+#
+RUN useradd --shell /bin/bash user01 --create-home
+USER user01
+
+#
+# no HEALTHCHECK
+#
+HEALTHCHECK NONE
+
+#
 # just start a interactive shell
 #
 ENTRYPOINT [ "bash" ]

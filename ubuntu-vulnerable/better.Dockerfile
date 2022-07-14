@@ -11,13 +11,25 @@ RUN apt-get update -qq \
 #
 # Insert a step here to upgrade all packages that might be upgradable
 #
-RUN apt upgrade -y
+# RUN apt upgrade -y
+RUN apt-get upgrade -y
 
 #
 # copy a file into workdir and set this as the starting folder
 #
 WORKDIR /workdir
 COPY ./files /workdir
+
+#
+# create a non-root user to run as
+#
+RUN useradd --shell /bin/bash user01 --create-home
+USER user01
+
+#
+# no HEALTHCHECK
+#
+HEALTHCHECK NONE
 
 #
 # just start a interactive shell
