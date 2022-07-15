@@ -1,4 +1,6 @@
-# (c) 2022 Amazon Web Services, Inc. or its affiliates. All Rights Reserved.
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
+
 FROM ubuntu:18.04
 
 #

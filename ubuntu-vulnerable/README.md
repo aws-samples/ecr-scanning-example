@@ -210,4 +210,5 @@ command-line interfaces.  Users are encouraged to look at the scripts and unders
 which are used within the scripts so that they are familiar with what `docker`, `aws`, and `jq` commands
 are being used.
 
-(c) 2022 Amazon Web Services, Inc. or its affiliates. All Rights Reserved.
+Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+SPDX-License-Identifier: MIT-0
