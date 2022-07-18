@@ -1,4 +1,4 @@
-# example-ecr-scanning
+# ecr-scanning-example
 
 Sample scripts and Docker container build instructions to show how to use AWS Elastic Container Registry (ECR) for scanning Docker images for vulnerabilities.
 
@@ -21,7 +21,7 @@ Since these are shell scripts, no installation other than cloning the repository
 
 To install, run:
 
-    git clone git@ssh.gitlab.aws.dev:timhahn/example-ecr-scanning.git
+    git clone git@github.com:aws-samples/ecr-scanning-example.git
 
 The scripts are meant to run with `bash` and the she-bang comment at the top of each script references
 either `/bin/bash` or `/bin/sh`.
@@ -33,7 +33,7 @@ provide enough information for how to use the script.
 ## Support
 Support is provided on a case-by-case basis.  If you find a problem, open an issue to report it.
 
-If you have a suggestion, open an issue to suggest it.  Better yet, [fork this repo](https://gitlab.aws.dev/timhahn/example-ecr-scanning/-/forks/new), create the enhancement,
+If you have a suggestion, open an issue to suggest it.  Better yet, [fork this repo](https://github.com/aws-samples/ecr-scanning-example/fork), create the enhancement,
 and submit a merge request!  Also, see [Contributing](#contributing).
 
 ## Project status
@@ -43,9 +43,8 @@ The project is active.
 None planned.  We're open to suggestions!
 
 ## Contributing
-[Fork me](https://gitlab.aws.dev/timhahn/example-ecr-scanning/-/forks/new)! Feel free to fork this repository and suggest updates and enhancements.
 
-Also, see [CONTRIBUTING](./CONTRIBUTING.md)
+See [CONTRIBUTING](./CONTRIBUTING.md) for more information.
 
 ## Authors and acknowledgment
 
@@ -53,8 +52,13 @@ Thanks to:
  - Tim Hahn (@timhahn, timhahn@amazon.com) - original author
  - Swati Priya (@priyaswa, priyaswa@amazon.com) - reviewer, contributor
 
+## Security
+
+See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+
 ## License
-see [LICENSE](./LICENSE).
+
+This library is licensed under the MIT-0 License. See the LICENSE file.
 
 Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 SPDX-License-Identifier: MIT-0
