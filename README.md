@@ -1,4 +1,4 @@
-## ecr-scanning-example
+# ecr-scanning-example
 
 Sample scripts and Docker container build instructions to show how to use AWS Elastic Container Registry (ECR) for scanning Docker images for vulnerabilities.
 
