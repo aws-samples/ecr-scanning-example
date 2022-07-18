@@ -49,8 +49,8 @@ See [CONTRIBUTING](./CONTRIBUTING.md) for more information.
 ## Authors and acknowledgment
 
 Thanks to:
- - Tim Hahn (@timhahn, timhahn@amazon.com) - original author
- - Swati Priya (@priyaswa, priyaswa@amazon.com) - reviewer, contributor
+ - Tim Hahn (@climbertjh2) - original author
+ - Swati Priya (@priyaswa) - reviewer, contributor
 
 ## Security
 
