@@ -2,6 +2,21 @@
 
 Sample scripts and Docker container build instructions to show how to use AWS Elastic Container Registry (ECR) for scanning Docker images for vulnerabilities.
 
+## Table of contents
+ - [ecr-scanning-example](#ecr-scanning-example)
+   - [Description](#description)
+   - [Badges](#badges)
+   - [Visuals](#visuals)
+   - [Installation](#installation)
+   - [Usage](#usage)
+   - [Support](#support)
+   - [Project Status](#project-status)
+   - [Roadmap](#roadmap)
+   - [Contributing](#contributing)
+   - [Authors and Acknowledgement](#authors-and-acknowledgment)
+   - [Security](#security)
+   - [License](#license)
+
 ## Description
 Building, running, and in general working with Docker images and containers requires using quite a few command-line
 commands.  The same is true when using the AWS ECR to hold Docker images or retrieve them to run on a target
@@ -9,6 +24,15 @@ system.
 
 This repository contains several short, useful, shell scripts to wrap around running `docker` and `aws` commands.
 These scripts can be used separately or in combination to do various tasks when using these CLIs.
+
+There are two folders in this repository:
+- `utilities` - this folder contains useful shell scripts for working with building Docker images,
+pushing docker images to an AWS Elastic Container Registry (ECR) repository, and parsing image
+scan results after a docker image is scanned by AWS ECR.
+
+- `ubuntu-vulnerable` - this folder contains Dockerfiles used to build the docker images that are pushed to AWS ECR
+and scanned by AWS ECR.  As the name suggests, the resulting built images contain vulnerabilities and should **NOT** be
+used for any purpose other than to show the results of AWS ECR image scanning.
 
 ## Badges
 None.
@@ -21,7 +45,9 @@ Since these are shell scripts, no installation other than cloning the repository
 
 To install, run:
 
-    git clone git@github.com:aws-samples/ecr-scanning-example.git
+```bash
+git clone git@github.com:aws-samples/ecr-scanning-example.git
+```
 
 The scripts are meant to run with `bash` and the she-bang comment at the top of each script references
 either `/bin/bash` or `/bin/sh`.

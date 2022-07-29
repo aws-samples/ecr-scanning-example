@@ -3,27 +3,19 @@
 # SPDX-License-Identifier: MIT-0
 
 function usage {
-    echo "Usage: $1 <region> <accountID> <repositoryName>"
+    echo "Usage: $1 <repositoryName>"
 }
 
 command=$0
-region=$1
-accountID=$2
-repositoryName=$3
-# repositoryTag=$4
+repositoryName=$1
 
 # check input parameters
-if [[ -z "$region" || -z "$accountID" || -z "$repositoryName" ]]; then
+if [[ -z "$repositoryName" ]]; then
     usage "$command"
     exit 1
 fi
 
-# first, get docker logged into ECR
-
-aws ecr get-login-password --region "$region" \
-    | docker login --username AWS --password-stdin "$accountID".dkr.ecr."$region".amazonaws.com
-
-# second, configure the ECR repository to be used
+# configure the ECR repository to be used
 
 aws ecr create-repository --repository-name "$repositoryName" \
     --image-scanning-configuration scanOnPush=true \

@@ -7,10 +7,7 @@ function usage {
 }
 
 command=$0
-# region=$1
-# accountID=$2
 repositoryName=$1
-# repositoryTag=$4
 
 # check input parameters
 if [[ -z "$repositoryName" ]]; then
@@ -18,7 +15,6 @@ if [[ -z "$repositoryName" ]]; then
     exit 1
 fi
 
-# delete the ECR repository, forcing the deletion (any images in the repository will be deleted!!)
-
-aws ecr delete-repository --repository-name "$repositoryName" \
-    --force
+aws ecr put-registry-scanning-configuration \
+    --scan-type BASIC \
+    --rules 'scanFrequency=SCAN_ON_PUSH,repositoryFilters=[{filter='"$repositoryName"'*,filterType=WILDCARD}]'

@@ -7,10 +7,7 @@ function usage {
 }
 
 command=$0
-# region=$1
-# accountID=$2
 repositoryName=$1
-# repositoryTag=$4
 
 # check input parameters
 if [[ -z "$repositoryName" ]]; then
@@ -19,5 +16,9 @@ if [[ -z "$repositoryName" ]]; then
 fi
 
 aws ecr put-registry-scanning-configuration \
-    --scan-type BASIC \
-    --rules 'scanFrequency=SCAN_ON_PUSH,repositoryFilters=[{filter='$repositoryName'*,filterType=WILDCARD}]'
+    --scan-type ENHANCED \
+    --rules \
+'[{"scanFrequency": "SCAN_ON_PUSH", '\
+'  "repositoryFilters": [{"filter": "'"$repositoryName"'*","filterType": "WILDCARD"}]}, '\
+' {"scanFrequency": "CONTINUOUS_SCAN", '\
+'  "repositoryFilters": [{"filter": "'"$repositoryName"'*","filterType": "WILDCARD"}]}]'
