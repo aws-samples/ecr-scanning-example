@@ -30,4 +30,4 @@ fi
 
 # build the image using the name and tag provided with the Dockerfile in the current folder
 
-docker build -t "$repositoryName":"$repositoryTag" -f ./bad.Dockerfile .
+docker build -t "$repositoryName":"$repositoryTag" -f "$dockerfileDir"/bad.Dockerfile .
