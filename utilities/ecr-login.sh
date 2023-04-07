@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT-0
 
 function usage {
-    echo "Usage: $1 <repositoryName> <repositoryTag>"
+    echo "Usage: $1"
 }
 
 function getAWSInfo {
@@ -19,11 +19,9 @@ function getAWSInfo {
 getAWSInfo
 
 command=$0
-repositoryName=$1
-repositoryTag=$2
 
 # check input parameters
-if [[ -z "$region" || -z "$accountID" || -z "$repositoryName" || -z "$repositoryTag" ]]; then
+if [[ -z "$region" || -z "$accountID" ]]; then
     usage "$command"
     exit 1
 fi
@@ -51,12 +49,7 @@ if [ "${containerCommand}" == '' ]; then
         exit 255
 fi
 
-# now tag the existing (local) image
+# get docker logged into ECR
 
-"${containerCommand}" tag "$repositoryName":"$repositoryTag" "$accountID".dkr.ecr."$region".amazonaws.com/"$repositoryName":"$repositoryTag"
-
-# now push the docker image
-
-"${containerCommand}" push  "$accountID".dkr.ecr."$region".amazonaws.com/"$repositoryName":"$repositoryTag"
-
-#  Note - the output (JSON) from this command is displayed on stdout
+aws ecr get-login-password --region "$region" \
+    | "${containerCommand}" login --username AWS --password-stdin "$accountID".dkr.ecr."$region".amazonaws.com
